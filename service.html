@@ -17,6 +17,7 @@
          	window.scrollTo(0, 1);
          }
       </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <!--//meta tags ends here-->
       <!--booststrap-->
       <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
@@ -202,12 +203,36 @@
          <div class="container py-lg-5 py-md-5 py-sm-4 py-4">
             <div class="row subscribe-form">
                <div class="col-lg-6 email-sub-agile">
-                  <div class="form-group ">
-                     <input type="email" class="form-control email-sub-agile" placeholder="Email">
+
+                  <form method="POST" action="" id="email-sub">
+                  <div class="form-group">
+                     <input type="email" class="form-control email-sub-agile" placeholder="Email" name="email">
                   </div>
                   <div class="text-center">
                      <button type="submit" class="btn subscrib-btnn">Submit</button>
                   </div>
+               </form>
+
+               <script>
+                  $("#email-sub").submit((e)=>{
+                      e.preventDefault()
+                      $.ajax({
+                          url:"https://script.google.com/macros/s/AKfycbweStjcGlFV2SSVLXPYBzl8nkds2kBFZjUvnvkz/exec",
+                          data:$("#email-sub").serialize(),
+                          method:"post",
+                          success:function (response){
+                              alert("Form submitted successfully")
+                              window.location.reload()
+                              //window.location.href="https://google.com"
+                          },
+                          error:function (err){
+                              alert("Something Error")
+              
+                          }
+                      })
+                  })
+              </script>
+
                </div>
                <div class="col-lg-6 email-info">
                   <div class="wthree-form-list clr-black">
